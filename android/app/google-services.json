@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "905691047508",
+    "project_id": "vgfluttertemplate",
+    "storage_bucket": "vgfluttertemplate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905691047508:android:317b99da15ea184af1afc1",
+        "android_client_info": {
+          "package_name": "com.example.verygoodcore.vg_flutter_template"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905691047508-gm6n3gmugeq83idblkkglagcdo3dp2of.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCK-GpxwGnjnoCFEvWJrhBwEbPvqT1SRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905691047508-gm6n3gmugeq83idblkkglagcdo3dp2of.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

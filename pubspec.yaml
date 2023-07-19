@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   bloc: ^8.1.2
+  firebase_auth: ^4.7.1
   firebase_core: ^2.15.0
   flutter:
     sdk: flutter
@@ -15,9 +16,12 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.0
+  json_serializable: ^6.7.1
+  logger:
 
 dev_dependencies:
   bloc_test: ^9.1.2
+  build_runner: ^2.4.6
   flutter_test:
     sdk: flutter
   mocktail: ^0.3.0

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../widgets/textfield_widget.dart';
+import 'package:vg_flutter_template/features/authentication/data/model/user_model.dart';
+import 'package:vg_flutter_template/features/authentication/domain/on_submit.dart';
+import 'package:vg_flutter_template/features/authentication/presentation/widgets/textfield_widget.dart';
+import 'package:vg_flutter_template/home/presentation/pages/homepage.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
@@ -8,13 +10,12 @@ class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Create TextEditingController instances
-    final TextEditingController sNameController = TextEditingController();
-    final TextEditingController sUsernameController = TextEditingController();
-    final TextEditingController sGenderController = TextEditingController();
-    final TextEditingController sEmailController = TextEditingController();
-    final TextEditingController sPasswordController = TextEditingController();
-    final TextEditingController sConfirmPasswordController =
-        TextEditingController();
+    final sNameController = TextEditingController();
+    final sUsernameController = TextEditingController();
+    final sGenderController = TextEditingController();
+    final sEmailController = TextEditingController();
+    final sPasswordController = TextEditingController();
+    final sConfirmPasswordController = TextEditingController();
 
     return SingleChildScrollView(
       child: Container(
@@ -70,7 +71,18 @@ class SignupPage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Handle signup button pressed
+                onSubmitSignup(
+                  User(
+                    email: sEmailController.text,
+                    password: sPasswordController.text,
+                  ),
+                ).then(
+                  (value) => Navigator.of(context).push(
+                    MaterialPageRoute<HomePage>(
+                      builder: (context) => const HomePage(),
+                    ),
+                  ),
+                );
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(

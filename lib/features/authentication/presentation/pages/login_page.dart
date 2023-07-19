@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../widgets/textfield_widget.dart';
-import 'signup_page.dart';
+import 'package:vg_flutter_template/features/authentication/presentation/pages/signup_page.dart';
+import 'package:vg_flutter_template/features/authentication/presentation/widgets/textfield_widget.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -68,11 +67,11 @@ class LoginPage extends StatelessWidget {
                 const Text("Don't have an account?"),
                 TextButton(
                   onPressed: () {
-                    showModalBottomSheet(
+                    showModalBottomSheet<SignupPage>(
                       isScrollControlled: true,
                       showDragHandle: true,
                       context: context,
-                      builder: (context) => SignupPage(),
+                      builder: (context) => const SignupPage(),
                     );
                   },
                   child: const Text('Signup'),

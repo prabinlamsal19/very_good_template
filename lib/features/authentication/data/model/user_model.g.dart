@@ -3,33 +3,42 @@
 part of 'user_model.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// TypeAdapterGenerator
 // **************************************************************************
 
-// ignore: unused_element
-User _$UserFromJson(Map<String, dynamic> json) => User(
-      email: json['email'] as String,
-      password: json['password'] as String,
-      userName: json['userName'] as String?,
-      fullName: json['fullName'] as String?,
-      age: json['age'] as int?,
-      gender: $enumDecodeNullable(_$GenderEnumMap, json['gender']),
-      address: json['address'] as String?,
-    );
+class UserModelAdapter extends TypeAdapter<UserModel> {
+  @override
+  final int typeId = 1;
 
-// ignore: unused_element
-Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-      'email': instance.email,
-      'password': instance.password,
-      'userName': instance.userName,
-      'fullName': instance.fullName,
-      'age': instance.age,
-      'gender': _$GenderEnumMap[instance.gender],
-      'address': instance.address,
+  @override
+  UserModel read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
+    return UserModel(
+      email: fields[0] as String,
+      password: fields[1] as String,
+    );
+  }
 
-const _$GenderEnumMap = {
-  Gender.male: 'male',
-  Gender.female: 'female',
-  Gender.other: 'other',
-};
+  @override
+  void write(BinaryWriter writer, UserModel obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.email)
+      ..writeByte(1)
+      ..write(obj.password);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UserModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vg_flutter_template/app/cubit/app_cubit.dart';
 import 'package:vg_flutter_template/features/authentication/data/model/user_model.dart';
-import 'package:vg_flutter_template/features/authentication/domain/firebase_repository.dart';
+import 'package:vg_flutter_template/features/authentication/data/repository/firebase_repository.dart';
 import 'package:vg_flutter_template/features/authentication/domain/navigate_if.dart';
 import 'package:vg_flutter_template/features/authentication/domain/on_submit.dart';
 import 'package:vg_flutter_template/features/authentication/presentation/pages/login_page.dart';

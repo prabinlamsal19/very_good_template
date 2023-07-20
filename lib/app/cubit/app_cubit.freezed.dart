@@ -19,21 +19,21 @@ mixin _$AppState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loggedIn,
+    required TResult Function(UserModel user) loggedIn,
     required TResult Function() loggedOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loggedIn,
+    TResult? Function(UserModel user)? loggedIn,
     TResult? Function()? loggedOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loggedIn,
+    TResult Function(UserModel user)? loggedIn,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) =>
@@ -116,7 +116,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loggedIn,
+    required TResult Function(UserModel user) loggedIn,
     required TResult Function() loggedOut,
   }) {
     return initial();
@@ -126,7 +126,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loggedIn,
+    TResult? Function(UserModel user)? loggedIn,
     TResult? Function()? loggedOut,
   }) {
     return initial?.call();
@@ -136,7 +136,7 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loggedIn,
+    TResult Function(UserModel user)? loggedIn,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) {
@@ -190,6 +190,8 @@ abstract class _$$LoggedInCopyWith<$Res> {
   factory _$$LoggedInCopyWith(
           _$LoggedIn value, $Res Function(_$LoggedIn) then) =
       __$$LoggedInCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel user});
 }
 
 /// @nodoc
@@ -198,57 +200,81 @@ class __$$LoggedInCopyWithImpl<$Res>
     implements _$$LoggedInCopyWith<$Res> {
   __$$LoggedInCopyWithImpl(_$LoggedIn _value, $Res Function(_$LoggedIn) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$LoggedIn(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LoggedIn implements LoggedIn {
-  const _$LoggedIn();
+  const _$LoggedIn({required this.user});
+
+  @override
+  final UserModel user;
 
   @override
   String toString() {
-    return 'AppState.loggedIn()';
+    return 'AppState.loggedIn(user: $user)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoggedIn);
+        (other.runtimeType == runtimeType &&
+            other is _$LoggedIn &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoggedInCopyWith<_$LoggedIn> get copyWith =>
+      __$$LoggedInCopyWithImpl<_$LoggedIn>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loggedIn,
+    required TResult Function(UserModel user) loggedIn,
     required TResult Function() loggedOut,
   }) {
-    return loggedIn();
+    return loggedIn(user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loggedIn,
+    TResult? Function(UserModel user)? loggedIn,
     TResult? Function()? loggedOut,
   }) {
-    return loggedIn?.call();
+    return loggedIn?.call(user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loggedIn,
+    TResult Function(UserModel user)? loggedIn,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) {
     if (loggedIn != null) {
-      return loggedIn();
+      return loggedIn(user);
     }
     return orElse();
   }
@@ -289,7 +315,12 @@ class _$LoggedIn implements LoggedIn {
 }
 
 abstract class LoggedIn implements AppState {
-  const factory LoggedIn() = _$LoggedIn;
+  const factory LoggedIn({required final UserModel user}) = _$LoggedIn;
+
+  UserModel get user;
+  @JsonKey(ignore: true)
+  _$$LoggedInCopyWith<_$LoggedIn> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -331,7 +362,7 @@ class _$LoggedOut implements LoggedOut {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loggedIn,
+    required TResult Function(UserModel user) loggedIn,
     required TResult Function() loggedOut,
   }) {
     return loggedOut();
@@ -341,7 +372,7 @@ class _$LoggedOut implements LoggedOut {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? loggedIn,
+    TResult? Function(UserModel user)? loggedIn,
     TResult? Function()? loggedOut,
   }) {
     return loggedOut?.call();
@@ -351,7 +382,7 @@ class _$LoggedOut implements LoggedOut {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loggedIn,
+    TResult Function(UserModel user)? loggedIn,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) {

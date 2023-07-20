@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:vg_flutter_template/features/authentication/domain/firebase_repository.dart';
+import 'package:vg_flutter_template/features/authentication/data/repository/firebase_repository.dart';
 import 'package:vg_flutter_template/features/authentication/domain/navigate_if.dart';
 import 'package:vg_flutter_template/features/authentication/presentation/pages/signup_page.dart';
 import 'package:vg_flutter_template/features/authentication/presentation/widgets/textfield_widget.dart';

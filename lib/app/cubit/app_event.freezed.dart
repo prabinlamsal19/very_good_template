@@ -19,16 +19,19 @@ mixin _$AppEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkStoredLoginEvent,
+    required TResult Function() logOutEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkStoredLoginEvent,
+    TResult? Function()? logOutEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkStoredLoginEvent,
+    TResult Function()? logOutEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -36,16 +39,19 @@ mixin _$AppEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(CheckStoredLoginEvnet value)
         checkStoredLoginEvent,
+    required TResult Function(LogOutEvent value) logOutEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckStoredLoginEvnet value)? checkStoredLoginEvent,
+    TResult? Function(LogOutEvent value)? logOutEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckStoredLoginEvnet value)? checkStoredLoginEvent,
+    TResult Function(LogOutEvent value)? logOutEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$CheckStoredLoginEvnet implements CheckStoredLoginEvnet {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkStoredLoginEvent,
+    required TResult Function() logOutEvent,
   }) {
     return checkStoredLoginEvent();
   }
@@ -115,6 +122,7 @@ class _$CheckStoredLoginEvnet implements CheckStoredLoginEvnet {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkStoredLoginEvent,
+    TResult? Function()? logOutEvent,
   }) {
     return checkStoredLoginEvent?.call();
   }
@@ -123,6 +131,7 @@ class _$CheckStoredLoginEvnet implements CheckStoredLoginEvnet {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkStoredLoginEvent,
+    TResult Function()? logOutEvent,
     required TResult orElse(),
   }) {
     if (checkStoredLoginEvent != null) {
@@ -136,6 +145,7 @@ class _$CheckStoredLoginEvnet implements CheckStoredLoginEvnet {
   TResult map<TResult extends Object?>({
     required TResult Function(CheckStoredLoginEvnet value)
         checkStoredLoginEvent,
+    required TResult Function(LogOutEvent value) logOutEvent,
   }) {
     return checkStoredLoginEvent(this);
   }
@@ -144,6 +154,7 @@ class _$CheckStoredLoginEvnet implements CheckStoredLoginEvnet {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckStoredLoginEvnet value)? checkStoredLoginEvent,
+    TResult? Function(LogOutEvent value)? logOutEvent,
   }) {
     return checkStoredLoginEvent?.call(this);
   }
@@ -152,6 +163,7 @@ class _$CheckStoredLoginEvnet implements CheckStoredLoginEvnet {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckStoredLoginEvnet value)? checkStoredLoginEvent,
+    TResult Function(LogOutEvent value)? logOutEvent,
     required TResult orElse(),
   }) {
     if (checkStoredLoginEvent != null) {
@@ -163,4 +175,107 @@ class _$CheckStoredLoginEvnet implements CheckStoredLoginEvnet {
 
 abstract class CheckStoredLoginEvnet implements AppEvent {
   const factory CheckStoredLoginEvnet() = _$CheckStoredLoginEvnet;
+}
+
+/// @nodoc
+abstract class _$$LogOutEventCopyWith<$Res> {
+  factory _$$LogOutEventCopyWith(
+          _$LogOutEvent value, $Res Function(_$LogOutEvent) then) =
+      __$$LogOutEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LogOutEventCopyWithImpl<$Res>
+    extends _$AppEventCopyWithImpl<$Res, _$LogOutEvent>
+    implements _$$LogOutEventCopyWith<$Res> {
+  __$$LogOutEventCopyWithImpl(
+      _$LogOutEvent _value, $Res Function(_$LogOutEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LogOutEvent implements LogOutEvent {
+  const _$LogOutEvent();
+
+  @override
+  String toString() {
+    return 'AppEvent.logOutEvent()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LogOutEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkStoredLoginEvent,
+    required TResult Function() logOutEvent,
+  }) {
+    return logOutEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkStoredLoginEvent,
+    TResult? Function()? logOutEvent,
+  }) {
+    return logOutEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkStoredLoginEvent,
+    TResult Function()? logOutEvent,
+    required TResult orElse(),
+  }) {
+    if (logOutEvent != null) {
+      return logOutEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CheckStoredLoginEvnet value)
+        checkStoredLoginEvent,
+    required TResult Function(LogOutEvent value) logOutEvent,
+  }) {
+    return logOutEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CheckStoredLoginEvnet value)? checkStoredLoginEvent,
+    TResult? Function(LogOutEvent value)? logOutEvent,
+  }) {
+    return logOutEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckStoredLoginEvnet value)? checkStoredLoginEvent,
+    TResult Function(LogOutEvent value)? logOutEvent,
+    required TResult orElse(),
+  }) {
+    if (logOutEvent != null) {
+      return logOutEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LogOutEvent implements AppEvent {
+  const factory LogOutEvent() = _$LogOutEvent;
 }

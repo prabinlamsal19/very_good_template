@@ -33,7 +33,7 @@ Future<void> loginUserWithEmailandPassword(
 
 Future<bool> flagUserStatus() async {
   bool value = false;
-  await FirebaseAuth.instance.authStateChanges().listen(
+  await auth.authStateChanges().listen(
     (User? user) {
       if (user == null) {
         value = false;
@@ -46,7 +46,7 @@ Future<bool> flagUserStatus() async {
 }
 
 void logUserChanges() {
-  FirebaseAuth.instance.userChanges().listen((User? user) {
+  auth.userChanges().listen((User? user) {
     if (user == null) {
       logger.i('User is currently signed out!');
     } else {
@@ -57,10 +57,11 @@ void logUserChanges() {
 
 void logUserData() {
   logger
-    ..i(FirebaseAuth.instance.currentUser?.uid)
-    ..i(FirebaseAuth.instance.currentUser?.displayName)
-    ..i(FirebaseAuth.instance.currentUser?.email);
+    ..i(auth.currentUser?.uid)
+    ..i(auth.currentUser?.displayName)
+    ..i(auth.currentUser?.email);
 }
 
-
-//// assumption: if the same key is used in the same box, each new data is overriden to the previous one.
+void logOutUser() async {
+  await auth.signOut();
+}

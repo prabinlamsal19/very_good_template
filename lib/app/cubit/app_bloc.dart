@@ -12,18 +12,20 @@ import 'app_event.dart';
 class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc() : super(const Initial()) {
     on<AppEvent>((event, emit) {
-      event.when(
-        checkStoredLoginEvent: () {
-          final authBox = Hive.box<UserModel>('authBox');
-          if (authBox.isNotEmpty) {
-            final user = authBox.get('authBoxKey');
-            print("The saved user is ${user!.email}");
-            emit(LoggedIn(user: user!));
-          } else {
-            emit(const LoggedOut());
-          }
-        },
-      );
+      event.when(checkStoredLoginEvent: () {
+        final authBox = Hive.box<UserModel>('authBox');
+        if (authBox.isNotEmpty) {
+          final user = authBox.get('authBoxKey');
+          print("The saved user is ${user!.email}");
+          emit(LoggedIn(user: user!));
+        } else {
+          emit(const LoggedOut());
+        }
+      }, logOutEvent: () async {
+        await HiveRepository().deletePersistedData();
+        emit(LoggedOut());
+        logOutUser(); //from firebase
+      });
     });
   }
 }

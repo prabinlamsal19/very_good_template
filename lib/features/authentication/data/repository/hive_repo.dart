@@ -13,4 +13,8 @@ class HiveRepository {
   UserModel? getPersistedUserData() {
     return authBox.get('authBoxKey');
   }
+
+  Future<void> deletePersistedData() async {
+    await authBox.delete('authBoxKey');
+  }
 }

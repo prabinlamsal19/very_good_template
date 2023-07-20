@@ -32,5 +32,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(await builder());
 }

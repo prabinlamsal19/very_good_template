@@ -3,26 +3,39 @@ import 'package:logger/logger.dart';
 
 final logger = Logger();
 
-final user = FirebaseAuth.instance.currentUser;
+final auth = FirebaseAuth.instance;
+final user = auth.currentUser;
 
 Future<void> createUserWithEmailAndPassword(
   String email,
   String password,
 ) async {
-  await FirebaseAuth.instance
-      .createUserWithEmailAndPassword(email: email, password: password);
+  await auth.createUserWithEmailAndPassword(email: email, password: password);
 }
 
-void logUserStatus() {
-  FirebaseAuth.instance.authStateChanges().listen(
+Future<void> loginUserWithEmailandPassword(
+    String email, String password) async {
+  try {
+    final userCredential =
+        await auth.signInWithEmailAndPassword(email: email, password: password);
+  } on FirebaseAuthException catch (e) {
+    logger.e(e.toString());
+  }
+  // await auth.setPersistence(Persistence.LOCAL);
+}
+
+Future<bool> flagUserStatus() async {
+  bool value = false;
+  await FirebaseAuth.instance.authStateChanges().listen(
     (User? user) {
       if (user == null) {
-        logger.i('User is currently signed out');
+        value = false;
       } else {
-        logger.i('User is signed in!');
+        value = true;
       }
     },
   );
+  return value;
 }
 
 void logUserChanges() {

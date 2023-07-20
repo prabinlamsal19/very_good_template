@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:vg_flutter_template/app/cubit/app_cubit.dart';
 import 'package:vg_flutter_template/features/authentication/data/model/user_model.dart';
+import 'package:vg_flutter_template/features/authentication/domain/firebase_repository.dart';
+import 'package:vg_flutter_template/features/authentication/domain/navigate_if.dart';
 import 'package:vg_flutter_template/features/authentication/domain/on_submit.dart';
+import 'package:vg_flutter_template/features/authentication/presentation/pages/login_page.dart';
 import 'package:vg_flutter_template/features/authentication/presentation/widgets/textfield_widget.dart';
 import 'package:vg_flutter_template/home/presentation/pages/homepage.dart';
 
@@ -70,19 +74,14 @@ class SignupPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                onSubmitSignup(
-                  User(
-                    email: sEmailController.text,
-                    password: sPasswordController.text,
-                  ),
-                ).then(
-                  (value) => Navigator.of(context).push(
-                    MaterialPageRoute<HomePage>(
-                      builder: (context) => const HomePage(),
-                    ),
-                  ),
+              onPressed: () async {
+                await createUserWithEmailAndPassword(
+                  sEmailController.text,
+                  sPasswordController.text,
+                  //can add here other user properties also
                 );
+                // ignore: use_build_context_synchronously
+                navigateIfLoggedIn(context);
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(

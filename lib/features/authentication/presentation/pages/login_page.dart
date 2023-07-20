@@ -1,6 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:vg_flutter_template/features/authentication/domain/firebase_repository.dart';
+import 'package:vg_flutter_template/features/authentication/domain/navigate_if.dart';
 import 'package:vg_flutter_template/features/authentication/presentation/pages/signup_page.dart';
 import 'package:vg_flutter_template/features/authentication/presentation/widgets/textfield_widget.dart';
+import 'package:vg_flutter_template/home/presentation/pages/homepage.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -8,7 +13,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Create TextEditingController instances
-    final lNameController = TextEditingController();
+    final lEmailController = TextEditingController();
     final lPasswordController = TextEditingController();
 
     return Scaffold(
@@ -33,8 +38,8 @@ class LoginPage extends StatelessWidget {
               height: 50,
             ),
             TextFieldWidget(
-              controller: lNameController,
-              labelText: 'Name',
+              controller: lEmailController,
+              labelText: 'Email',
               obscureText: false,
             ),
             const SizedBox(height: 20),
@@ -45,8 +50,10 @@ class LoginPage extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             ElevatedButton(
-              onPressed: () {
-                // Handle login button pressed
+              onPressed: () async {
+                await loginUserWithEmailandPassword(
+                    lEmailController.text, lPasswordController.text);
+                navigateIfLoggedIn(context);
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(

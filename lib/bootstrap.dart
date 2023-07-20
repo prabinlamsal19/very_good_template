@@ -5,8 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vg_flutter_template/app/core/firebase_options.dart';
-
-import 'features/authentication/data/model/user_model.dart';
+import 'package:vg_flutter_template/features/authentication/data/model/user_model.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -37,6 +36,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   );
   await Hive.initFlutter();
   Hive.registerAdapter(UserModelAdapter());
-  var authBox = await Hive.openBox<UserModel>('userBox');
+  await Hive.openBox<UserModel>('authBox');
+
   runApp(await builder());
 }

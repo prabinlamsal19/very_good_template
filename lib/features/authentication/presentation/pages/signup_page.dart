@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vg_flutter_template/app/cubit/app_cubit.dart';
+import 'package:vg_flutter_template/app/cubit/app_bloc.dart';
 import 'package:vg_flutter_template/features/authentication/data/model/user_model.dart';
 import 'package:vg_flutter_template/features/authentication/data/repository/firebase_repository.dart';
 import 'package:vg_flutter_template/features/authentication/domain/navigate_if.dart';

@@ -1,4 +1,6 @@
-part of 'app_cubit.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:vg_flutter_template/features/authentication/data/model/user_model.dart';
+part 'app_state.freezed.dart';
 
 @freezed
 class AppState with _$AppState {

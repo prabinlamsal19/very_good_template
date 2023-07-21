@@ -90,7 +90,7 @@ class LoginPage extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
 
               // or continue with
               Padding(
@@ -104,7 +104,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Text(
                         'Or continue with',
                         style: TextStyle(color: Colors.grey[700]),
@@ -150,9 +150,12 @@ class LoginPage extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignupPage()));
+                        context,
+                        // ignore: inference_failure_on_instance_creation
+                        MaterialPageRoute(
+                          builder: (context) => SignUpPage(),
+                        ),
+                      );
                     },
                     child: const Text(
                       'Register now',

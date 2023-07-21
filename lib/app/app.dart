@@ -43,7 +43,7 @@ class _AppState extends State<App> {
                 return const Scaffold(body: CircularProgressIndicator());
               },
               loggedIn: (userModel) => HomePage(userModel),
-              loggedOut: () => const LoginPage(),
+              loggedOut: () => LoginPage(),
             );
           },
         ),

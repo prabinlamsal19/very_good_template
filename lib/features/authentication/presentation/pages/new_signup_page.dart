@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:vg_flutter_template/features/authentication/data/repository/firebase_repository.dart';
+import 'package:vg_flutter_template/features/authentication/domain/navigate_if.dart';
 import 'package:vg_flutter_template/features/authentication/presentation/pages/signup_page.dart';
-import '../../data/repository/firebase_repository.dart';
-import '../../domain/navigate_if.dart';
-import '../widgets/my_button.dart';
-import '../widgets/my_textfield.dart';
-import '../widgets/square_tile.dart';
+import 'package:vg_flutter_template/features/authentication/presentation/widgets/my_button.dart';
+import 'package:vg_flutter_template/features/authentication/presentation/widgets/my_textfield.dart';
+import 'package:vg_flutter_template/features/authentication/presentation/widgets/square_tile.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -143,19 +143,17 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Not a member?',
+                    'Already a member?',
                     style: TextStyle(color: Colors.grey[700]),
                   ),
                   const SizedBox(width: 4),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignupPage()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
                     },
                     child: const Text(
-                      'Register now',
+                      'Login now',
                       style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
